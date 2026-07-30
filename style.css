@@ -1,0 +1,85 @@
+body{
+    margin:0px;
+}
+/*-------------------------------------------------------------------------------------*/
+.background img{
+    position:absolute;
+}
+#emoji1{
+    bottom: 40px;
+    left: 120px;
+    height: 120px;
+    width: 120px;
+    transform: rotate(20deg);
+}
+#emoji2{
+    bottom:50px;
+    right: 120px;
+    height: 80px;
+    width: 80px;
+    transform: rotate(-30deg);
+}
+#emoji3{
+    top:45px;
+    left: 100px;
+    height: 100px;
+    width: 100px;
+    transform: rotate(40deg);
+}
+#emoji4{
+    top:32px;
+    right: 190px;
+    height: 150px;
+    width: 150px;
+    transform: rotate(-10deg);
+}
+#emoji5{
+    top:25px;
+    right: 50%;
+    height: 150px;
+    width: 200px;
+    transform: rotate(-10deg);
+}
+#emoji6{
+    bottom:25px;
+    left: 50%;
+    height: 150px;
+    width: 150px;
+    transform: rotate(-10deg);
+}
+.background{
+    background-color: #5D3140;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.heading {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    white-space: nowrap;    
+}
+.headingwhite{
+    color: #F6D8BD;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 120px;
+    margin: 0;
+}
+.headingblack{
+    color: rgba(0, 0, 0, 0.9);
+    font-family: "Edu NSW ACT Cursive", cursive;
+    font-size: 36px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    font-style: italic;
+    font-weight: 500;
+    left: 50%;
+    transform: translate(-50%, -50%) scaleX(3);
+}
+/*-------------------------------------------------------------------------------------*/
