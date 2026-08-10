@@ -4,71 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Oswald -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
-          rel="stylesheet">
-
-    <!-- Archivo Black -->
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
-          rel="stylesheet">
-
-    <!-- Fuzzy Bubbles -->
-    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap"
-          rel="stylesheet">
-
-    <!-- Cursive -->
-    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&display=swap"
-          rel="stylesheet">
+    <link rel="stylesheet" href="stylee.css">
 </head>
 <body>
-    <div>
-        <div id="navbar">
-            <div>
-                <a id="HomePage" href="#Home">PORTFOLIO</a>
-            </div>
-            <nav id="navtable">
-                <table>
-                    <tr>
-                        <td>Projects</td>
-                        <td>Experience</td>
-                        <td>Contacts</td>
-                    </tr>
-                </table>
-            </nav>
-            <div id="resume">
-                <a href="resume-project/index.html">RESUME</a>
-            </div>
+    <nav id="navbar">
+        <div>
+            <h1>Dhruv<p style="color: rgb(234, 0, 255); display: inline;">.</p></h1>
         </div>
-        <div id="Home">
-            <div id="about">
-                <h2>Hey this is</h2>
-                <h1>DHRUV PANDITA</h1>
-                <h2>A Web Developing Aspirant</h2>
-                <p>Second Year BTech student from Delhi Technological University (DTU), eager and passionate about learning web development for apps and websites, machine learning and AI. Always ready to tackle a problem infront of me.</p>
-                <div id="idtags">
-                    <a href=""><img src="images/githublogo.png" alt="GITHUB" style="width: 18px; height: 18px;">GITHUB</a>
-                    <a href=""><img src="images/LinkedInlogo.png" alt="LINKED-IN" style="width: 25px; height: 25px;">LINKED-IN</a>
-                </div>
+        <div id="navlist">
+            <a href="#About">About</a>
+            <a href="#Projects">Projects</a>
+            <a href="#Contacts">Contact</a>
+        </div>
+    </nav>
+    <div id="Hero">
+        <div id="herocontent">
+            <div id="eyebrow">
+                <span></span> 
+                2nd Year @DTU
             </div>
-            <div id="image">
-                <img src="images/im1.jpeg" alt="img" style="height: 80vh; width: 37vw;">
+            <div id="intro">
+                <h1>Hi, I'm <span>Dhruv Pandita.</span></h1>
+                <p>A second-year student at Delhi Technological University, learning Web Development and AI/ML while building projects along the way.</p>
             </div>
-            
+            <div id="buttons">
+                <a href="#Projects" id="projectsbuttonhero">View Projects</a>
+                <a href="#Contacts" id="contactsbuttonhero">Contact Me</a>
+            </div>
         </div>
     </div>
-    <div id="ProjectPage">
-        <div id="ProjectTitle">
-            <h2>PROJECTS</h2>
+    <div id="About">
+        <div class="box abouttopic" style="grid-area: box1">
+            <h2>01-ABOUT</h2>
+            <h1>A little about me.</h1>
         </div>
-        <div id="Projects">
-            <div class="projectcards">abc</div>
-            <div class="projectcards">def</div>
-            <div class="projectcards"></div>
-            <div class="projectcards"></div>
+        <div class="box aboutme" style="grid-area: box2">
+            <p>I'm <b style="color: white;">Dhruv Pandita</b>, a second-year student at <b style="color: white;"">Delhi Technological University (DTU)</b>.</p>
+            <p>I'm interested in building websites, learning modern web technologies and exploring Artificial Intelligence and Machine Learning.</p>
+            <p>This portfolio will grow as I build more projects, experiment with new technologies and learn new things.</p>
+        </div>
+        <div class="skillbox box" style="grid-area: box3">
+            <h1>Currently Learning</h1>
+            <div class="skills">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Python</span>
+                <span>Web Development</span>
+                <span>AI / ML</span>
+                <span>Git & GitHub</span>
+            </div>
         </div>
         
     </div>
