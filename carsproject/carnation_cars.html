@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carnation Cars — Certified Pre-Owned Cars in Delhi</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #111111;
+    --charcoal: #1C1C1C;
+    --white: #FFFFFF;
+    --orange: #FF6B1A;
+    --orange-dark: #E05510;
+    --silver: #8A8A8A;
+    --light-bg: #F5F5F5;
+    --card-bg: #222222;
+    --border: #2E2E2E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(17, 17, 17, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: padding 0.3s;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--white);
+    letter-spacing: 3px;
+    text-decoration: none;
+  }
+  .logo span { color: var(--orange); }
+
+  nav ul {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  nav ul a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--orange); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: var(--white) !important;
+    padding: 9px 22px;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--orange-dark) !important; color: var(--white) !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--charcoal);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 48px 80px;
+  }
+
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,107,26,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,107,26,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(255,107,26,0.12) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--orange);
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 9vw, 140px);
+    color: var(--white);
+    line-height: 0.9;
+    letter-spacing: 1px;
+    max-width: 900px;
+    margin-bottom: 28px;
+  }
+  .hero h1 .accent { color: var(--orange); }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: 44px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 16px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+  }
+  .btn-ghost:hover { border-color: var(--orange); background: rgba(255,107,26,0.08); }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { width: 40px; opacity: 0.3; }
+    50% { width: 60px; opacity: 0.7; }
+  }
+
+  /* STATS TICKER */
+  .stats-ticker {
+    background: var(--orange);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 14px 0;
+  }
+  .ticker-track {
+    display: inline-flex;
+    animation: tickerScroll 30s linear infinite;
+  }
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 40px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .ticker-item::after {
+    content: '●';
+    font-size: 6px;
+    opacity: 0.5;
+  }
+  @keyframes tickerScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* QUICKLINKS */
+  .quicklinks {
+    background: var(--black);
+    padding: 0 48px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .quicklinks::-webkit-scrollbar { display: none; }
+  .quicklinks-inner {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .qlink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 28px 32px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-right: 1px solid var(--border);
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+    min-width: 120px;
+    justify-content: center;
+  }
+  .qlink:hover { color: var(--orange); background: rgba(255,107,26,0.05); }
+  .qlink-icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 96px 48px; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 68px);
+    line-height: 1;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    color: var(--silver);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  /* INVENTORY */
+  .inventory { background: var(--light-bg); }
+
+  .filter-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .filter-btn {
+    padding: 9px 20px;
+    border-radius: 100px;
+    border: 1.5px solid #DCDCDC;
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--white);
+  }
+
+  .car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .car-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #E8E8E8;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+  .car-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  }
+
+  .car-img-wrap {
+    position: relative;
+    height: 200px;
+    background: #EFEFEF;
+    overflow: hidden;
+  }
+  .car-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .car-card:hover .car-img-wrap img { transform: scale(1.04); }
+
+  .car-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .car-badge.new { background: #27AE60; }
+
+  .car-info { padding: 20px; }
+
+  .car-brand {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+
+  .car-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .car-specs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 18px;
+    border: 1px solid #EFEFEF;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .spec {
+    flex: 1;
+    text-align: center;
+    padding: 10px 8px;
+    border-right: 1px solid #EFEFEF;
+  }
+  .spec:last-child { border-right: none; }
+  .spec-val {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black);
+    display: block;
+  }
+  .spec-label {
+    font-size: 10px;
+    color: var(--silver);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .car-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .car-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--black);
+  }
+  .car-price span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--silver);
+    margin-left: 4px;
+  }
+
+  .car-enquire {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--black);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 9px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .car-enquire:hover { background: var(--orange); }
+
+  .view-all-wrap {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  /* SELL CAR */
+  .sell-car {
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .sell-car::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,107,26,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .sell-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+  }
+
+  .sell-left .section-title { color: var(--white); }
+  .sell-left .section-subtitle { color: rgba(255,255,255,0.5); }
+
+  .sell-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 44px;
+  }
+  .sell-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--orange);
+    flex-shrink: 0;
+  }
+  .step-text h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .step-text p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.5;
+  }
+
+  .sell-form-card {
+    background: var(--charcoal);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+  }
+  .sell-form-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .form-group input, .form-group select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 13px 16px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus {
+    border-color: var(--orange);
+  }
+  .form-group select option { background: #1C1C1C; }
+  .form-full { grid-column: 1 / -1; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    border: 2px solid var(--black);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    padding: 44px 36px;
+    background: var(--white);
+    border-right: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+    transition: background 0.25s, color 0.25s;
+    cursor: pointer;
+  }
+  .service-card:hover {
+    background: var(--black);
+  }
+  .service-card:hover .service-title { color: var(--white); }
+  .service-card:hover .service-desc { color: rgba(255,255,255,0.55); }
+  .service-card:hover .service-icon { background: var(--orange); color: var(--white); }
+  .service-card:nth-child(3n) { border-right: none; }
+  .service-card:nth-child(n+4) { border-bottom: none; }
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: var(--light-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 24px;
+    transition: background 0.25s, color 0.25s;
+  }
+
+  .service-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    transition: color 0.25s;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--silver);
+    line-height: 1.6;
+    transition: color 0.25s;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--light-bg);
+  }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 44px;
+  }
+  .stat-box {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 28px;
+    border: 1px solid #E8E8E8;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--orange);
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+  .stat-desc {
+    font-size: 13px;
+    color: var(--silver);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+  .about-img-main {
+    width: 100%;
+    height: 480px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #DCDCDC;
+  }
+  .about-img-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .about-badge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: var(--black);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 24px 28px;
+    min-width: 180px;
+  }
+  .about-badge-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    color: var(--orange);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+  .about-badge-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--white); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .testimonial-card {
+    background: var(--light-bg);
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    border: 1px solid #E8E8E8;
+  }
+  .quote-mark {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: var(--orange);
+    line-height: 0.6;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .testimonial-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 24px;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .author-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+  }
+  .author-car {
+    font-size: 12px;
+    color: var(--silver);
+    margin-top: 2px;
+  }
+  .star-rating {
+    color: var(--orange);
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  /* CONTACT / FOOTER */
+  footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 48px 0;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .footer-brand .logo {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  .footer-brand p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+  .contact-item strong {
+    display: block;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 2px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .contact-icon { color: var(--orange); flex-shrink: 0; margin-top: 1px; }
+
+  .footer-col h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 12px; }
+  .footer-col ul a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--orange); }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .social-link {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.5);
+    transition: all 0.2s;
+  }
+  .social-link:hover { border-color: var(--orange); color: var(--orange); background: rgba(255,107,26,0.1); }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+  }
+  .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--orange); }
+
+  /* FLOATING WHATSAPP */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    text-decoration: none;
+    z-index: 99;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(37,211,102,0.5);
+  }
+
+  /* MOBILE NAV MENU */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(17,17,17,0.98);
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 40px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--orange); }
+  .mobile-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 100px 24px 60px; }
+    section { padding: 64px 24px; }
+    .sell-inner { grid-template-columns: 1fr; gap: 48px; }
+    .about-inner { grid-template-columns: 1fr; gap: 48px; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .quicklinks { padding: 0 24px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { border-right: none !important; }
+    .footer-top { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    .car-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="logo">CARNA<span>T</span>ION</a>
+  <ul>
+    <li><a href="#inventory">Browse Cars</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#sell">Sell Your Car</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close menu">✕</button>
+  <a href="#inventory" onclick="document.getElementById('mobileMenu').classList.remove('open')">Browse Cars</a>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About Us</a>
+  <a href="#sell" onclick="document.getElementById('mobileMenu').classList.remove('open')">Sell Your Car</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-eyebrow">Delhi's Trusted Pre-Owned Car Destination</div>
+  <h1>
+    Drive Your<br>
+    <span class="accent">Dream Car</span><br>
+    Today.
+  </h1>
+  <p class="hero-sub">Certified pre-owned cars with full inspection history, fair pricing, and no hidden surprises. Located in Naraina, New Delhi.</p>
+  <div class="hero-actions">
+    <a href="#inventory" class="btn-primary">Browse Inventory →</a>
+    <a href="#sell" class="btn-ghost">Sell Your Car</a>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- STATS TICKER -->
+<div class="stats-ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">500+ Cars in Stock</span>
+    <span class="ticker-item">12 Years in Business</span>
+    <span class="ticker-item">3200+ Happy Customers</span>
+    <span class="ticker-item">150-Point Inspection</span>
+    <span class="ticker-item">RC Transfer Assistance</span>
+    <span class="ticker-item">Finance Available</span>
+    <span class="ticker-item">Free Test Drive</span>
+    <span class="ticker-item">Naraina, New Delhi</span>
+    <span class="ticker-item">500+ Cars in Stock</span>
+    <span class="ticker-item">12 Years in Business</span>
+    <span class="ticker-item">3200+ Happy Customers</span>
+    <span class="ticker-item">150-Point Inspection</span>
+    <span class="ticker-item">RC Transfer Assistance</span>
+    <span class="ticker-item">Finance Available</span>
+    <span class="ticker-item">Free Test Drive</span>
+    <span class="ticker-item">Naraina, New Delhi</span>
+  </div>
+</div>
+
+<!-- QUICKLINKS -->
+<div class="quicklinks">
+  <div class="quicklinks-inner">
+    <a href="#inventory" class="qlink">
+      <span class="qlink-icon">🚗</span>
+      Browse Cars
+    </a>
+    <a href="#inventory" class="qlink">
+      <span class="qlink-icon">⚡</span>
+      Electric Cars
+    </a>
+    <a href="#services" class="qlink">
+      <span class="qlink-icon">🔧</span>
+      Car Service
+    </a>
+    <a href="#services" class="qlink">
+      <span class="qlink-icon">✨</span>
+      Detailing
+    </a>
+    <a href="#sell" class="qlink">
+      <span class="qlink-icon">💰</span>
+      Sell Car
+    </a>
+    <a href="#services" class="qlink">
+      <span class="qlink-icon">🛡️</span>
+      Insurance
+    </a>
+    <a href="#contact" class="qlink">
+      <span class="qlink-icon">📍</span>
+      Find Us
+    </a>
+  </div>
+</div>
+
+<!-- INVENTORY -->
+<section class="inventory" id="inventory">
+  <div class="section-eyebrow">Our Collection</div>
+  <h2 class="section-title">Recently Parked</h2>
+  <p class="section-subtitle">Hand-picked cars, every one inspected by our certified technicians before it reaches you.</p>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterCars('all', this)">All Cars</button>
+    <button class="filter-btn" onclick="filterCars('sedan', this)">Sedans</button>
+    <button class="filter-btn" onclick="filterCars('suv', this)">SUVs</button>
+    <button class="filter-btn" onclick="filterCars('hatchback', this)">Hatchbacks</button>
+    <button class="filter-btn" onclick="filterCars('electric', this)">Electric</button>
+    <button class="filter-btn" onclick="filterCars('under15', this)">Under ₹15L</button>
+  </div>
+
+  <div class="car-grid" id="carGrid">
+    <!-- Cards injected by JS -->
+  </div>
+
+  <div class="view-all-wrap">
+    <a href="#contact" class="btn-primary">View Full Inventory →</a>
+  </div>
+</section>
+
+<!-- SELL YOUR CAR -->
+<section class="sell-car" id="sell">
+  <div class="sell-inner">
+    <div class="sell-left">
+      <div class="section-eyebrow">Sell Your Car</div>
+      <h2 class="section-title" style="color:var(--white)">Get the Best<br><span style="color:var(--orange)">Price in<br>Delhi.</span></h2>
+      <p class="section-subtitle">We give you a fair, transparent offer — no lowballing, no waiting weeks. Walk in and walk out with a deal.</p>
+
+      <div class="sell-steps">
+        <div class="sell-step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <h4>Share Your Car Details</h4>
+            <p>Fill in the quick form or call us directly with your car's make, model, and year.</p>
+          </div>
+        </div>
+        <div class="sell-step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <h4>Free Inspection at Our Showroom</h4>
+            <p>Drive in to Naraina. Our team evaluates your car on the spot — no charge, no obligation.</p>
+          </div>
+        </div>
+        <div class="sell-step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <h4>Receive Your Best Offer</h4>
+            <p>Get a fair market offer the same day. Accept and get paid immediately.</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="tel:+911141234567" class="btn-primary">Call Now: +91 11 4123 4567</a>
+    </div>
+
+    <div class="sell-form-card">
+      <h3>Get a Free Valuation</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Rahul Sharma">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 98765 43210">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Car Brand</label>
+          <select>
+            <option value="">Select Brand</option>
+            <option>Maruti Suzuki</option>
+            <option>Hyundai</option>
+            <option>Honda</option>
+            <option>Toyota</option>
+            <option>Tata</option>
+            <option>Mahindra</option>
+            <option>Ford</option>
+            <option>Volkswagen</option>
+            <option>Skoda</option>
+            <option>Kia</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Model</label>
+          <input type="text" placeholder="e.g. Swift, Creta">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Year</label>
+          <select>
+            <option value="">Select Year</option>
+            <option>2024</option><option>2023</option><option>2022</option>
+            <option>2021</option><option>2020</option><option>2019</option>
+            <option>2018</option><option>2017</option><option>2016</option>
+            <option>2015 or older</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Km Driven</label>
+          <input type="text" placeholder="e.g. 45,000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group form-full">
+          <label>Preferred Time to Call</label>
+          <select>
+            <option>Morning (9 AM – 12 PM)</option>
+            <option>Afternoon (12 PM – 4 PM)</option>
+            <option>Evening (4 PM – 8 PM)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" style="width:100%; justify-content:center; margin-top:8px;">Request Free Valuation →</button>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-eyebrow">What We Do</div>
+  <h2 class="section-title">More Than Just<br>a Car Dealership</h2>
+  <p class="section-subtitle">From finding your next car to keeping it running perfectly — we've got every angle covered.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <div class="service-title">Certified Inspection</div>
+      <p class="service-desc">Every car goes through a 150-point checklist by our trained technicians before it's listed for sale.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💳</div>
+      <div class="service-title">Finance & Loans</div>
+      <p class="service-desc">Competitive EMI options through our banking partners. Get pre-approved in minutes with minimal paperwork.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔄</div>
+      <div class="service-title">RC Transfer</div>
+      <p class="service-desc">We handle the full registration transfer process — so you don't spend a single day at the RTO.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
+      <div class="service-title">Car Insurance</div>
+      <p class="service-desc">Get the best insurance quote from multiple providers, processed right at our showroom.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <div class="service-title">Detailing & Polish</div>
+      <p class="service-desc">Premium interior and exterior detailing services to keep your car looking showroom-fresh.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔧</div>
+      <div class="service-title">Post-Sale Service</div>
+      <p class="service-desc">Our workshop handles regular maintenance and repairs, so the relationship doesn't end at purchase.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-left">
+      <div class="section-eyebrow">Who We Are</div>
+      <h2 class="section-title">Delhi's Most<br>Trusted Pre-Owned<br>Car Dealership.</h2>
+      <p style="font-size:16px; color:var(--silver); line-height:1.8; margin-bottom:16px;">
+        Carnation has been serving car buyers and sellers in Delhi since 2012. Located in the heart of Naraina Industrial Area, we've built a reputation on three things: fair prices, honest assessments, and zero-pressure sales.
+      </p>
+      <p style="font-size:16px; color:var(--silver); line-height:1.8;">
+        Every car we sell has been thoroughly inspected, documented, and priced fairly against the market. We believe a second-hand car shouldn't feel like a gamble.
+      </p>
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="stat-num">12+</div>
+          <div class="stat-desc">Years serving<br>Delhi drivers</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">3.2K</div>
+          <div class="stat-desc">Satisfied customers<br>and counting</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">500+</div>
+          <div class="stat-desc">Cars currently<br>in our inventory</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">150</div>
+          <div class="stat-desc">Inspection checkpoints<br>on every car</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-img-main">
+        <img src="https://images.unsplash.com/photo-1593194025073-8f4bf3bb6b5f?w=800&q=80" alt="Carnation showroom" loading="lazy">
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-num">4.8★</div>
+        <div class="about-badge-text">Average customer<br>rating on Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-eyebrow">Customer Stories</div>
+  <h2 class="section-title">Don't Take<br>Our Word For It</h2>
+  <p class="section-subtitle" style="margin-bottom:48px;">Over 3,000 Delhi families have driven home happy. Here's what a few of them had to say.</p>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <div class="star-rating">★★★★★</div>
+      <p class="testimonial-text">Found a great Hyundai Creta in exactly the condition they described. No surprises, no pressure. The RC transfer was done within a week. Highly recommend Carnation.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">RS</div>
+        <div>
+          <div class="author-name">Rajiv Sethi</div>
+          <div class="author-car">Bought Hyundai Creta 2021</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <div class="star-rating">★★★★★</div>
+      <p class="testimonial-text">I went in just to browse and the staff never pushed me once. Ended up buying a Swift Dzire and got my loan approved the same day. Best car buying experience in Delhi.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">PK</div>
+        <div>
+          <div class="author-name">Preeti Khanna</div>
+          <div class="author-car">Bought Maruti Swift Dzire 2022</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <div class="star-rating">★★★★☆</div>
+      <p class="testimonial-text">Sold my old Innova here in one visit. They gave a fair price and handled everything including the paperwork. Much easier than listing it myself. Will come back to buy next.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">AM</div>
+        <div>
+          <div class="author-name">Aman Malhotra</div>
+          <div class="author-car">Sold Toyota Innova 2019</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo">CARNA<span>T</span>ION</a>
+      <p>Certified pre-owned cars in New Delhi. Fair pricing, honest inspections, and a showroom that puts you first.</p>
+      <div class="contact-item">
+        <span class="contact-icon">📍</span>
+        <div>
+          <strong>Showroom Address</strong>
+          B-67, Naraina Industrial Area Phase 2,<br>Naraina, New Delhi – 110012
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📞</span>
+        <div>
+          <strong>Call Us</strong>
+          <a href="tel:+911141234567" style="color:inherit; text-decoration:none;">+91 11 4123 4567</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">✉️</span>
+        <div>
+          <strong>Email</strong>
+          <a href="mailto:hello@carnationcars.in" style="color:inherit; text-decoration:none;">hello@carnationcars.in</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">🕐</span>
+        <div>
+          <strong>Hours</strong>
+          Mon–Sat: 9:30 AM – 7:30 PM<br>
+          Sunday: 10 AM – 5 PM
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="social-link" aria-label="Facebook">👍</a>
+        <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+        <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Buy a Car</h4>
+      <ul>
+        <li><a href="#">All Cars</a></li>
+        <li><a href="#">Sedans</a></li>
+        <li><a href="#">SUVs</a></li>
+        <li><a href="#">Hatchbacks</a></li>
+        <li><a href="#">Electric Cars</a></li>
+        <li><a href="#">Cars Under ₹5 Lakh</a></li>
+        <li><a href="#">Cars Under ₹10 Lakh</a></li>
+        <li><a href="#">Cars Under ₹15 Lakh</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Car Inspection</a></li>
+        <li><a href="#">Car Financing</a></li>
+        <li><a href="#">Car Insurance</a></li>
+        <li><a href="#">RC Transfer</a></li>
+        <li><a href="#">Car Detailing</a></li>
+        <li><a href="#">Post-Sale Service</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Carnation</a></li>
+        <li><a href="#">Why Choose Us</a></li>
+        <li><a href="#">How We Inspect</a></li>
+        <li><a href="#">Sell Your Car</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Carnation Cars Pvt. Ltd. All rights reserved.</span>
+    <div style="display:flex; gap:24px;">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/911141234567" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">💬</a>
+
+<script>
+  // CAR DATA
+  const cars = [
+    {
+      id: 1, brand: "Maruti Suzuki", name: "Swift ZXI+", year: 2022, km: "32,000", fuel: "Petrol", price: "₹7.8L",
+      category: "hatchback", badge: "Featured",
+      img: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=600&q=80"
+    },
+    {
+      id: 2, brand: "Hyundai", name: "Creta SX 1.5", year: 2021, km: "48,000", fuel: "Diesel", price: "₹14.2L",
+      category: "suv", badge: "",
+      img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=80"
+    },
+    {
+      id: 3, brand: "Honda", name: "City 4th Gen V MT", year: 2020, km: "61,000", fuel: "Petrol", price: "₹9.5L",
+      category: "sedan", badge: "",
+      img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80"
+    },
+    {
+      id: 4, brand: "Tata", name: "Nexon EV Max", year: 2023, km: "18,000", fuel: "Electric", price: "₹15.9L",
+      category: "electric", badge: "New",
+      img: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600&q=80"
+    },
+    {
+      id: 5, brand: "Toyota", name: "Innova Crysta GX", year: 2019, km: "74,000", fuel: "Diesel", price: "₹16.5L",
+      category: "suv", badge: "",
+      img: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80"
+    },
+    {
+      id: 6, brand: "Volkswagen", name: "Polo GT TSI", year: 2021, km: "29,000", fuel: "Petrol", price: "₹10.8L",
+      category: "hatchback", badge: "Featured",
+      img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&q=80"
+    }
+  ];
+
+  function renderCars(list) {
+    const grid = document.getElementById('carGrid');
+    grid.innerHTML = list.map(c => `
+      <div class="car-card">
+        <div class="car-img-wrap">
+          <img src="${c.img}" alt="${c.brand} ${c.name}" loading="lazy">
+          ${c.badge ? `<span class="car-badge ${c.badge === 'New' ? 'new' : ''}">${c.badge}</span>` : ''}
+        </div>
+        <div class="car-info">
+          <div class="car-brand">${c.brand}</div>
+          <div class="car-name">${c.name}</div>
+          <div class="car-specs">
+            <div class="spec">
+              <span class="spec-val">${c.year}</span>
+              <span class="spec-label">Year</span>
+            </div>
+            <div class="spec">
+              <span class="spec-val">${c.km}</span>
+              <span class="spec-label">KM</span>
+            </div>
+            <div class="spec">
+              <span class="spec-val">${c.fuel}</span>
+              <span class="spec-label">Fuel</span>
+            </div>
+          </div>
+          <div class="car-footer">
+            <div class="car-price">${c.price}<span>onwards</span></div>
+            <a href="#contact" class="car-enquire">Enquire →</a>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function filterCars(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if (type === 'all') return renderCars(cars);
+    if (type === 'under15') return renderCars(cars.filter(c => {
+      const num = parseFloat(c.price.replace('₹','').replace('L',''));
+      return num < 15;
+    }));
+    renderCars(cars.filter(c => c.category === type));
+  }
+
+  renderCars(cars);
+
+  // Navbar compact on scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.padding =
+      window.scrollY > 60 ? '12px 48px' : '18px 48px';
+  });
+</script>
+</body>
+</html>

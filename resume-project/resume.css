@@ -1,0 +1,132 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #f4f7fa;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #222;
+    line-height: 1.6;
+    padding: 20px;
+}
+h1{
+    color: rgb(9, 3, 29);
+    box-sizing: border-box;
+    font-size: 48px;
+    margin: 10px;
+    padding:10px;
+    display: flex;
+    justify-content: center;
+}
+.divboxes{
+    margin:10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    align-items: center;
+    width: 97%;
+    min-height: 200px;
+    height: auto;
+    box-shadow: 5px 5px 50px rgb(135, 128, 128);
+}
+.insidebox{
+    margin:10px;
+    line-height: 42px;
+    border-left: 6px solid rgb(62, 62, 213);
+    border-radius: 15px;
+
+    box-sizing: border-box;
+    background-color:  rgb(227, 236, 255);
+    padding: 25px;
+    padding-right: 35px;
+    height: auto;
+    width:97%;
+}
+h3{
+    font-size: 18px;
+}
+#projlist{
+    line-height: 24px;
+}
+/* #contactbox{
+    position: fixed;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: beige;
+    box-sizing: border-box;
+    height: 100px;
+    width:100px;
+    margin:10px;
+    border:1px solid black;
+    border-radius: 15;
+    right:10px;
+    bottom:10px;
+} */
+#contactbox{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    width: auto;
+    min-width: 50px;
+    height: auto;      /* important */
+    min-height: 50px;
+
+    padding: 10px;
+    background-color:  rgb(255, 255, 255);
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: -10px 10px 30px rgb(135, 128, 128);
+}
+
+#heading{
+    color: rgb(9, 3, 29);
+    box-sizing: border-box;
+    border-color: black;
+    border-radius: 10px;
+    font-size: 32px;
+    margin: 10px;
+    border-width: 2px;
+    display: flex;
+    justify-content: center;
+    position:relative;
+    width:100%;
+}
+#heading::after{
+    content: "";
+    position: absolute;
+    left: 43%;
+    bottom: -5px;
+
+    width: 120;
+    height: 4px;
+
+    background: linear-gradient(to right,red,blue);
+    border-radius: 10px;
+}
+.divboxes img{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    height: 100px;
+    width: 150px;
+}
+
+details{
+    margin:10px;
+    line-height: 24px;
+    box-sizing: border-box;
+    height: auto;
+    width:97%;
+    background-color:  rgb(227, 236, 255);
+    border-radius:5px;
+    padding: 25px;
+}
+details[open]{
+    background-color: rgb(208, 234, 255);
+}
+
