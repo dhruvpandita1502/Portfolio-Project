@@ -51,6 +51,16 @@ body {
       rgba(0, 212, 255, 0.05),
       transparent 25%
     ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(65, 89, 0, 0.1),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(0, 212, 255, 0.05),
+      transparent 25%
+    ),
     var(--bg);
 
   color: var(--text);
@@ -189,6 +199,7 @@ a{
     color: #59ddff;
     font-size: 1.2vw;
     letter-spacing: 0.5em;
+    font-weight: bolder;
 }
 .abouttopic h1{
     font-size: 4vw;
@@ -234,4 +245,107 @@ a{
     color: #d8dde7;
     
     font-size: 0.85rem;
+}
+
+#Projects{
+    height: 100vh;
+    display: grid;
+    padding: 7vw 5vw;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: 1.5fr 2.5fr;
+
+    column-gap:2em;
+    row-gap: 40px;
+    grid-template-areas: "box1 box1 box1 box1 box1 box1 box1 box1 box1 box1 box1 box1"
+                         "box2 box2 box2 box2 box2 box2 box3 box3 box3 box3 box3 box3";
+}
+.projecttopic h2{
+    color: #59ddff;
+    font-size: 1.2vw;
+    letter-spacing: 0.5em;
+    font-weight: bolder;
+}
+.projecttopic h1{
+    font-size: 4vw;
+}
+.section-intro{
+    display: inline-block;
+    width: 70vw;
+    color: var(--muted);
+    font-size: 1.6vw;
+}
+.projbox{
+    background: rgba(17, 20, 27, 0.75);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+.projbox:hover{
+    border-color: #7c5cff;
+    transform: translate(0px,-5px);
+}
+.projbox h2{
+    color: #7c5cff;
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+.projbox h1{
+    color: #f4f7fb;
+    font-weight: bold;
+    font-size: 2vw;
+}
+.projbox p{
+    padding-top: 10px;
+}
+.projbox a{
+    margin-top: 20px;
+    text-decoration: none;
+    color: #7c5cff;
+    font-weight: bold;
+}
+
+#Contacts{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+#Contacts h2{
+    color: #59ddff;
+    font-size: 1.2vw;
+    letter-spacing: 0.5em;
+    font-weight: bolder;
+}
+#Contacts h1{
+    font-size: 4vw;
+}
+#Contacts div{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+#Contacts a{
+    text-decoration: none;
+    color: #f4f7fb;
+    font-weight: bold;
+    padding: 15px 25px;
+    border-radius: 5px;
+}
+#github{
+    background: linear-gradient(to bottom right,var(--purple),var(--blue));
+}
+#linkedin{
+    background: rgba(17, 20, 27, 0.75);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 5px;
 }
